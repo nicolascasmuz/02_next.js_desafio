@@ -9,3 +9,11 @@
   height: 60px;
   padding: 30;
 }
+
+.header {
+  margin-bottom: 25px;
+}
+
+.footer {
+  margin-top: 25px;
+}

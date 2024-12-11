@@ -1,4 +1,5 @@
 import styles from "./id.module.css";
+import MainLayout from "../../components/main-layout";
 
 export async function getStaticPaths() {
   return {
@@ -17,17 +18,16 @@ export async function getStaticProps(context: any) {
 
 export default function ProductsISG({ productData }: any) {
   return (
-    <div className={styles["card-comp"]}>
-      <h3 className={styles["card-title"]}>{productData.name}</h3>
-      <img
-        src={productData.pic}
-        alt={productData.name.toLowerCase().replaceAll(" ", "-")}
-        className={styles["card-img"]}
-      />
-      <div className={styles["card-price-link"]}>
+    <MainLayout>
+      <div className={styles["card-comp"]}>
+        <h3 className={styles["card-title"]}>{productData.name}</h3>
+        <img
+          src={productData.pic}
+          alt={productData.name.toLowerCase().replaceAll(" ", "-")}
+          className={styles["card-img"]}
+        />
         <h4 className={styles["card-price"]}>${productData.price}</h4>
-        <button className={styles["card-see-more"]}>Ver mas...</button>
       </div>
-    </div>
+    </MainLayout>
   );
 }

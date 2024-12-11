@@ -1,8 +1,6 @@
 import Link from "next/link";
 import MainLayout from "../components/main-layout";
-import { productsIndex } from "../lib/algolia";
 import styles from "./index.module.css";
-import { revalidatePath } from "next/cache";
 
 export async function getServerSideProps(context: any) {
   const res = await fetch("http://localhost:3000/api/products");
@@ -26,7 +24,7 @@ export default function Main({ productsData }: any) {
               />
               <div className={styles["card-price-link"]}>
                 <h4 className={styles["card-price"]}>${product.price}</h4>
-                <Link href={"/products/" + product.objectID}>
+                <Link href={"/products-ssr/" + product.objectID}>
                   <button className={styles["card-see-more"]}>
                     Ver mas...
                   </button>
