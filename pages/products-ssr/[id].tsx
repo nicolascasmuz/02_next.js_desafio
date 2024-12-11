@@ -1,14 +1,14 @@
 import styles from "./id.module.css";
-import { productsIndex } from "../../lib/algolia";
 
 export async function getServerSideProps(context: any) {
   const id = context.params.id;
 
-  const productData = await productsIndex.getObject(id);
+  const res = await fetch("http://localhost:3000/api/product/" + id);
+  const productData = await res.json();
   return { props: { productData } };
 }
 
-export default function ProductPage({ productData }: any) {
+export default function ProductsSSR({ productData }: any) {
   return (
     <div className={styles["card-comp"]}>
       <h3 className={styles["card-title"]}>{productData.name}</h3>

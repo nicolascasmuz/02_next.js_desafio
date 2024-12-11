@@ -1,15 +1,8 @@
 import styles from "./id.module.css";
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/object-id");
-  const productIDs = await res.json();
-
-  const paths = productIDs.map((productID) => {
-    return { params: { id: productID } };
-  });
-
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
@@ -19,10 +12,10 @@ export async function getStaticProps(context: any) {
 
   const res = await fetch("http://localhost:3000/api/product/" + id);
   const productData = await res.json();
-  return { props: { productData } };
+  return { props: { productData }, revalidate: 1000 };
 }
 
-export default function ProductsSSG({ productData }: any) {
+export default function ProductsISG({ productData }: any) {
   return (
     <div className={styles["card-comp"]}>
       <h3 className={styles["card-title"]}>{productData.name}</h3>

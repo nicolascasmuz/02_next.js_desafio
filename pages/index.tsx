@@ -5,7 +5,8 @@ import styles from "./index.module.css";
 import { revalidatePath } from "next/cache";
 
 export async function getServerSideProps(context: any) {
-  const productsData = await productsIndex.search("");
+  const res = await fetch("http://localhost:3000/api/products");
+  const productsData = await res.json();
   return { props: { productsData } };
 }
 

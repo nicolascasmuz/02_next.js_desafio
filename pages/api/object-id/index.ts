@@ -13,18 +13,5 @@ export default methods({
     }
 
     res.status(200).json(productIDs);
-
-    /* const products = productsData.hits;
-    const id = router.query.id;
-
-    const foundID = products.find((p) => {
-      return p.objectID == id;
-    });
-
-    if (foundID) {
-      res.status(200).json(foundID);
-    } else {
-      null;
-    } */
   },
 });
